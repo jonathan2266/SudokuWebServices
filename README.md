@@ -49,3 +49,9 @@ A new puzzle is discovered by *Sudoku.Scraper.API*. The puzzle can be stored in 
 Another incoming message when a puzzle is solved. The solution can then be included on the website.
 
 Now you can search for puzzles and view their solutions.
+
+## Putting it all together in Docker
+
+All these services can be build into Docker Images.
+
+A docker compose file can be used to put up and tear down the complete stack. This includes the Services, Databases and Messaging system.
