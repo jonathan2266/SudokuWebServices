@@ -2,9 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY 123/ ./Services
+COPY Sudoku.Services.Web/ ./Services
 WORKDIR /source/Services/Sudoku.Services.Web
-RUN ls
+RUN ls -la /source/Services/Sudoku.Services.Web
 RUN dotnet restore
 
 WORKDIR /source/Services/Sudoku.Scraper.API
