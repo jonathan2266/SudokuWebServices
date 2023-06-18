@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY Sudoku.Services.Web/ ./Services
+COPY 123/ ./Services
 WORKDIR /source/Services/Sudoku.Services.Web
 RUN ls
 RUN dotnet restore
