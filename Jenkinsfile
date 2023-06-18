@@ -18,5 +18,12 @@ pipeline {
 				'''
 			}
 		}
+		stage('Docker Image') {
+			steps {
+				sh '''#!/bin/bash
+				buildah bud --isolation chroot -f ./Sudoku.Services.Web/Sudoku.Scraper.API
+				'''
+			}
+		}
     }
 }
