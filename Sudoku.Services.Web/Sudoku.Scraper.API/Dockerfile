@@ -4,6 +4,8 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY Sudoku.Services.Web/ ./Services
 WORKDIR /source/Services/
+ARG Password
+RUN dotnet nuget add source http://192.168.1.17:3000/api/packages/Home/nuget/index.json -n internal.home -u jonathan -p $Password --store-password-in-clear-text
 RUN dotnet restore
 
 WORKDIR /source/Services/Sudoku.Scraper.API
