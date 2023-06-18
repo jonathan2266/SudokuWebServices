@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sudoku.Scraper.Core.Strategies
+namespace Sudoku.Scraper.Core.Services.Strategies
 {
-    public interface IStrategy
+    public interface IDownloadStrategyFactory
     {
-        Task Execute();
+        Task<IStrategy> Create();
     }
 }

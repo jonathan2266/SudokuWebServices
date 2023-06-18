@@ -1,23 +1,27 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Sudoku.Parser;
 using Sudoku.Parser.Normalization;
 using Sudoku.Parser.Readers;
 using Sudoku.Parser.Web.Sudoku;
 using Sudoku.Scraper.Core.Configuration;
-using Sudoku.Scraper.Core.Version;
+using Sudoku.Scraper.Core.DTO.NotifyMessages;
+using Sudoku.Scraper.Core.Repositories;
+using Sudoku.Scraper.Core.Services.Version;
 using System.Text;
 using static Sudoku.Parser.Utilities.UnorderedCellUtilities;
 
-namespace Sudoku.Scraper.Core.Strategies
+namespace Sudoku.Scraper.Core.Services.Strategies
 {
-    public class ConfigurableDownloadStratefyFactory : IDownloadStrategyFactory
+    public class ConfigurableDownloadStrategyFactory : IDownloadStrategyFactory
     {
         private readonly ScrapeOptions _scrapeOptions;
         private readonly IServiceProvider _serviceProvider;
 
         private readonly INormalize _normalize = new HexaDecimalNormalizerWithSingleOffset();
+        private readonly Boundary _boundary = new(9);
 
-        public ConfigurableDownloadStratefyFactory(IOptions<ScrapeOptions> scrapeOptions, IServiceProvider serviceProvider)
+        public ConfigurableDownloadStrategyFactory(IOptions<ScrapeOptions> scrapeOptions, IServiceProvider serviceProvider)
         {
             _scrapeOptions = scrapeOptions.Value;
             _serviceProvider = serviceProvider;
@@ -42,14 +46,21 @@ namespace Sudoku.Scraper.Core.Strategies
         private IStrategy CreateSudokuStrategy(string url)
         {
             var boardNumber = _serviceProvider.GetRequiredService<IProvideBoardNumber>();
-            var normalize = new HexaDecimalNormalizerWithSingleOffset(); //_serviceProvider.GetRequiredService<INormalize>();
-            var clientfactory = _serviceProvider.GetRequiredService<IHttpClientFactory>();
-            Boundary boundary = new(9);
-            var retriever = new RetrievePartialWebFormattedPuzzle(normalize, boundary);
+            var unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
+            var notifier = _serviceProvider.GetRequiredService<INotify<NewPuzzleFound>>();
 
-            var reader = new HtmlReaderOnce(clientfactory, url);
-            //var puzzleFactory = _serviceProvider.GetRequiredService<IPuzzleRetrieverFactory>();
-            return new Web1SudokuStrategy(boardNumber, retriever, reader);
+            return new Web1SudokuStrategy(boardNumber, GetRetriever(), CreateReaderForStrategy(url), unitOfWork, notifier);
+        }
+
+        private IReader CreateReaderForStrategy(string url)
+        {
+            var clientfactory = _serviceProvider.GetRequiredService<IHttpClientFactory>();
+            return new HtmlReaderOnce(clientfactory, url);
+        }
+
+        private IRetrievePuzzle GetRetriever()
+        {
+            return new RetrievePartialWebFormattedPuzzle(_normalize, _boundary);
         }
     }
 

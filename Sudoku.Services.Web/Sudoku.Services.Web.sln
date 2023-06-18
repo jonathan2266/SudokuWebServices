@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Scraper.API", "Sudoku.Scraper.API\Sudoku.Scraper.API.csproj", "{F69F45FA-CADB-406A-9484-40294078E418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Scraper.API", "Sudoku.Scraper.API\Sudoku.Scraper.API.csproj", "{F69F45FA-CADB-406A-9484-40294078E418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Scraper.Core", "Sudoku.Scraper.Core\Sudoku.Scraper.Core.csproj", "{A831A8D3-B389-4550-9F77-BE7A4314DEAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Scraper.Core", "Sudoku.Scraper.Core\Sudoku.Scraper.Core.csproj", "{A831A8D3-B389-4550-9F77-BE7A4314DEAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Scraper.DAL", "Sudoku.Scraper.DAL\Sudoku.Scraper.DAL.csproj", "{157E21A1-082F-4C83-9949-81D099CCEEA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku.Scraper.DAL", "Sudoku.Scraper.DAL\Sudoku.Scraper.DAL.csproj", "{157E21A1-082F-4C83-9949-81D099CCEEA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.Scraper.Domain", "Sudoku.Scraper.Domain\Sudoku.Scraper.Domain.csproj", "{02C1C84E-E9E6-4C22-82CD-5D9A770755CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku,Scraper.RabbitMQ", "Sudoku,Scraper.RabbitMQ\Sudoku,Scraper.RabbitMQ.csproj", "{32559950-4D71-4059-A463-A5764907CFF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{157E21A1-082F-4C83-9949-81D099CCEEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{157E21A1-082F-4C83-9949-81D099CCEEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{157E21A1-082F-4C83-9949-81D099CCEEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C1C84E-E9E6-4C22-82CD-5D9A770755CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C1C84E-E9E6-4C22-82CD-5D9A770755CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C1C84E-E9E6-4C22-82CD-5D9A770755CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C1C84E-E9E6-4C22-82CD-5D9A770755CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32559950-4D71-4059-A463-A5764907CFF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32559950-4D71-4059-A463-A5764907CFF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32559950-4D71-4059-A463-A5764907CFF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32559950-4D71-4059-A463-A5764907CFF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

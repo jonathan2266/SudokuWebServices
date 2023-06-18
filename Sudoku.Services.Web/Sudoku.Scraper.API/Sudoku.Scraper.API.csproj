@@ -4,15 +4,21 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ebd65f8c-2add-483c-8486-450bc551ab27</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sudoku.Scraper.Core\Sudoku.Scraper.Core.csproj" />
+    <ProjectReference Include="..\Sudoku,Scraper.RabbitMQ\Sudoku,Scraper.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Sudoku.Scraper.DAL\Sudoku.Scraper.DAL.csproj" />
   </ItemGroup>
 
 </Project>

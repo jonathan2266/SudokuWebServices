@@ -1,7 +1,10 @@
 ﻿using Autofac;
-using Sudoku.Scraper.Core;
-using Sudoku.Scraper.Core.Strategies;
-using Sudoku.Scraper.Core.Version;
+using Sudoku.Scraper.API.Services;
+using Sudoku.Scraper.Core.Repositories;
+using Sudoku.Scraper.Core.Services.Strategies;
+using Sudoku.Scraper.Core.Services.Version;
+using Sudoku.Scraper.Core.UseCase.Download;
+using Sudoku.Scraper.DAL.Repositories;
 
 namespace Sudoku.Scraper.API.Configuration.Modules
 {
@@ -11,9 +14,14 @@ namespace Sudoku.Scraper.API.Configuration.Modules
         {
             base.Load(builder);
 
-            builder.RegisterType<LimiterDownloadOrchastrator>().As<IDownloadOrchistrator>().InstancePerLifetimeScope();
-            builder.RegisterType<ConfigurableDownloadStratefyFactory>().As<IDownloadStrategyFactory>().InstancePerLifetimeScope();
+            builder.RegisterType<ConfigurableDownloadStrategyFactory>().As<IDownloadStrategyFactory>().InstancePerLifetimeScope();
             builder.RegisterType<SudokuBoardVersionProvider>().As<IProvideBoardNumber>().SingleInstance();
+
+
+            builder.RegisterType<LimiterDownloadOrchastrator>().As<IDownloadOrchistrator>().InstancePerLifetimeScope();
+            builder.RegisterDecorator<TransactionalOrchistrator, IDownloadOrchistrator>();
+
+            builder.RegisterType<UnitOfwork>().As<IUnitOfWork>().InstancePerLifetimeScope();
         }
     }
 }

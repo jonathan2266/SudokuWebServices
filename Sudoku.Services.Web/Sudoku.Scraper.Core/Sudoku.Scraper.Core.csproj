@@ -12,4 +12,8 @@
     <PackageReference Include="Sudoku.Parser.Web" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sudoku.Scraper.Domain\Sudoku.Scraper.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
