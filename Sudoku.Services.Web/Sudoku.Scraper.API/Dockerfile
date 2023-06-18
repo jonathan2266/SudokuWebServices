@@ -3,10 +3,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY Sudoku.Services.Web/ ./Services
-WORKDIR /source/Services/Sudoku.Services.Web
-RUN ls -l /source/Services/Sudoku.Services.Web
-RUN ls -l /source/Services/
-RUN ls -l /source/
+WORKDIR /source/Services/
 RUN dotnet restore
 
 WORKDIR /source/Services/Sudoku.Scraper.API
