@@ -5,6 +5,5 @@ namespace Sudoku.Scraper.Core.DTO.NotifyMessages
     public class NewPuzzleFound
     {
         public string Puzzle { get; init; } = string.Empty;
-        public Boundary Boundary { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
+using Sudoku.Scraper.Core.Common.Interfaces;
 using Sudoku.Scraper.Core.DTO.NotifyMessages;
-using Sudoku.Scraper.Core.Services;
 using Sudoku_Scraper.RabbitMQ;
 using Sudoku_Scraper.RabbitMQ.Senders;
 
@@ -33,7 +33,7 @@ namespace Sudoku.Scraper.API.Configuration.Modules
             {
                 var pool = context.Resolve<IConnectionPool>();
                 return pool.GetConnection();
-            }).InstancePerLifetimeScope();
+            }).ExternallyOwned().InstancePerLifetimeScope();
 
             builder.Register<IModel>((context) =>
             {

@@ -38,6 +38,11 @@ namespace Sudoku_Scraper.RabbitMQ
             {
                 _semaphore.Wait(); // Async await is not supported in a DI scenario + this should be a rare event.
 
+                if (_currentApplicationConnection?.IsOpen == true)
+                {
+                    return;
+                }
+
                 var factory = _serviceProvider.GetRequiredService<IAsyncConnectionFactory>();
                 _currentApplicationConnection = factory.CreateConnection();
             }

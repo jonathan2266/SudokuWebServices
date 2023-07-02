@@ -12,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureHostedServices();
 builder.Services.ConfigureApplicationOptions(builder.Configuration);
-builder.Services.AddHttpClient();
+builder.Services.AddApplicationTelemetry(builder.Configuration);
+builder.Services.AddCustomHttpClientFactories(builder.Configuration);
 builder.Services.AddDatabases(builder.Configuration);
 
 var app = builder.Build();

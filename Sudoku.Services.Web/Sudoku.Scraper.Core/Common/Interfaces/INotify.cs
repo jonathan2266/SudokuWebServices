@@ -1,4 +1,4 @@
-﻿namespace Sudoku.Scraper.Core.Services
+﻿namespace Sudoku.Scraper.Core.Common.Interfaces
 {
     public interface INotify<T> where T : class
     {

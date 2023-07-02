@@ -25,6 +25,8 @@ namespace Sudoku.Scraper.API.Services
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            await Task.Delay(5000, stoppingToken);
+
             while (!stoppingToken.IsCancellationRequested)
             {
                 try

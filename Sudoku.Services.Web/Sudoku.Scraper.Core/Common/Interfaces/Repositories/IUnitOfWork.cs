@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sudoku.Scraper.Core.Repositories
+namespace Sudoku.Scraper.Core.Common.Interfaces.Repositories
 {
     public interface IUnitOfWork
     {

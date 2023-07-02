@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sudoku.Scraper.Core.Repositories;
+using Sudoku.Scraper.Core.Common.Interfaces.Repositories;
 using Sudoku.Scraper.DAL.Entities;
 using Sudoku.Scraper.Domain.Entities;
 

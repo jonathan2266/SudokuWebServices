@@ -19,9 +19,9 @@ namespace Sudoku_Scraper.RabbitMQ
         //TODO configure from configuration
         public void Init()
         {
-            _channel.ExchangeDeclare("new_puzzle", "fanout", true, false, null);
-            _channel.QueueDeclare("puzzle_solver", true, false, false, null);
-            _channel.QueueBind("puzzle_solver", "new_puzzle", string.Empty, null);
+            _channel.ExchangeDeclare(Exchanges.NewPuzzle, "fanout", true, false, null);
+            _channel.QueueDeclare(Queues.PuzzleSolver, true, false, false, null);
+            _channel.QueueBind(Queues.PuzzleSolver, Exchanges.NewPuzzle, string.Empty, null);
         }
     }
 }

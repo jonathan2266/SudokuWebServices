@@ -1,6 +1,6 @@
 ﻿using Sudoku.Scraper.Domain.Entities;
 
-namespace Sudoku.Scraper.Core.Repositories
+namespace Sudoku.Scraper.Core.Common.Interfaces.Repositories
 {
     public interface IRetrievedPuzzlesRepository
     {

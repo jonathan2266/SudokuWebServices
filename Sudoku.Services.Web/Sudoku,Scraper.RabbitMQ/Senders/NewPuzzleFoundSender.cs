@@ -1,13 +1,13 @@
 ﻿using RabbitMQ.Client;
+using Sudoku.Scraper.Core.Common.Interfaces;
 using Sudoku.Scraper.Core.DTO.NotifyMessages;
-using Sudoku.Scraper.Core.Services;
 
 namespace Sudoku_Scraper.RabbitMQ.Senders
 {
     public class NewPuzzleFoundSender : SenderBase, INotify<NewPuzzleFound>
     {
 
-        public NewPuzzleFoundSender(IModel model) : base(model, string.Empty, "new_puzzle")
+        public NewPuzzleFoundSender(IModel model) : base(model, string.Empty, Exchanges.NewPuzzle)
         {
 
         }
@@ -15,6 +15,7 @@ namespace Sudoku_Scraper.RabbitMQ.Senders
         public async ValueTask Send(NewPuzzleFound message)
         {
             var serializedMessage = System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(message);
+
             await Send(serializedMessage);
         }
     }

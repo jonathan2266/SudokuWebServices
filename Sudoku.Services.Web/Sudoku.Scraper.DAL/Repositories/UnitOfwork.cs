@@ -1,4 +1,4 @@
-﻿using Sudoku.Scraper.Core.Repositories;
+﻿using Sudoku.Scraper.Core.Common.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
